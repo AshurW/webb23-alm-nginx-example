@@ -1,18 +1,15 @@
-services:
-  web:
-    build: .
-    ports:
-      - "8080:80"
-    # docker run -p 8080:80 nginx:latest
-    develop:
-      watch:
-        - action: sync
-          path: ./site
-          target: /usr/share/nginx/html
-        - action: rebuild
-          path: package.json
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_PASSWORD: example
-    # docker run -e POSTGRES_PASSWORD=example postgres:latest 
+services:  # Definierar tjänsterna som kommer att köras i din Docker Compose-applikation
+  web:  # Tjänsten heter 'web'
+    image: nginx:latest  # Använder den senaste versionen av Nginx-bilden från Docker Hub
+    ports:  # Exponerar portar för att komma åt tjänsten från värddatorn
+      - "8080:80"  # Binder port 8080 på värddatorn till port 80 i containern (där Nginx körs)
+    develop:  # (Notera: Detta är inte en standardnyckel i Docker Compose)
+      watch:  # Tittar efter filändringar och utför definierade åtgärder
+        - action: sync  # Synkroniserar filer
+          path: ./site  # Lokala sökvägen till katalogen som ska synkroniseras
+          target: /usr/share/nginx/html  # Sökväg i containern där filerna synkroniseras till
+
+  db:  # Tjänsten heter 'db'
+    image: postgres:latest  # Använder den senaste versionen av Postgres-bilden från Docker Hub
+    environment:  # Miljövariabler som skickas till containern
+      POSTGRES_PASSWORD: example  # Sätter lösenordet för Postgres databasadministratören
