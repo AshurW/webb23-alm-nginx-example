@@ -1,3 +1,5 @@
+# webb23-alm-nginx-example
+
 ```shell
 # Genom att använda `docker build`-kommandot bygger vi en Docker-image med etiketten `basic-site` från den aktuella katalogen (`.`).
 docker build -t basic-site . 
@@ -33,4 +35,4 @@ docker stop basic-site
 # Sedan kör vi en Bash-shell (`bash`) inuti den körande containern för interaktion.
 docker run -d -p 8888:80 basic-site
 docker exec -it <containerid> bash
-```# webb23-alm-nginx-example
+```

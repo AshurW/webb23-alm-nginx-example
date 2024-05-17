@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    # docker run -p 8080:80 nginx:latest
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: example
+    # docker run -e POSTGRES_PASSWORD=example postgres:latest 
