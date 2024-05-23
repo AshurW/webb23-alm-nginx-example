@@ -1,0 +1,21 @@
+apiVersion: apps/v1  # API-versionen som används för Deployment
+kind: Deployment  # Typen av Kubernetes-objekt, i detta fall en Deployment
+metadata:
+  name: nginx-deployment  # Namnet på Deployment-objektet
+  labels:
+    app: nginx  # Metadata labels för att identifiera objektet
+spec:
+  replicas: 3  # Antalet repliker (Pods) som ska köras
+  selector:
+    matchLabels:
+      app: nginx  # Etikett som Pods måste matcha för att tillhöra denna Deployment
+  template:
+    metadata:
+      labels:
+        app: nginx  # Etikett som appliceras på Pods
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest  # Docker-bilden som används för containern
+        ports:
+        - containerPort: 80  # Port som containern lyssnar på

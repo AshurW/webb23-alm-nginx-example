@@ -1,0 +1,10 @@
+apiVersion: v1  # API-version som används för att skapa objektet
+kind: Pod  # Typ av Kubernetes-objekt, i detta fall en Pod
+metadata:  # Metadata för Podden
+  name: nginx-pod  # Namnet på Podden
+spec:  # Specifikationen för Podden
+  containers:  # Lista över containrar som körs i Podden
+  - name: nginx  # Namnet på containern
+    image: nginx:latest  # Docker-imagen som används för containern
+    ports:  # Lista över portar som exponeras av containern
+    - containerPort: 80  # Port som nginx lyssnar på inom containern
